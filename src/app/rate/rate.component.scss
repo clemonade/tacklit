@@ -1,0 +1,57 @@
+.slider-wrapper {
+  height: 100%;
+
+  .mat-slider {
+    height: 100%;
+  }
+
+  .rating-texts-wrapper {
+    height: 100%;
+  }
+}
+
+:host ::ng-deep {
+  .slider-1.mat-accent .mat-slider-track-fill {
+    background-color: red;
+  }
+
+  .slider-2.mat-accent .mat-slider-track-fill {
+    background-color: red;
+  }
+
+  .slider-3.mat-accent .mat-slider-track-fill {
+    background-color: orange;
+  }
+
+  .slider-4.mat-accent .mat-slider-track-fill {
+    background-color: yellow;
+  }
+
+  .slider-5.mat-accent .mat-slider-track-fill {
+    background-color: yellow;
+  }
+
+  .slider-6.mat-accent .mat-slider-track-fill {
+    background-color: lightgray;
+  }
+
+  .slider-7.mat-accent .mat-slider-track-fill {
+    background-color: greenyellow;
+  }
+
+  .slider-8.mat-accent .mat-slider-track-fill {
+    background-color: greenyellow;
+  }
+
+  .slider-9.mat-accent .mat-slider-track-fill {
+    background-color: lightgreen;
+  }
+
+  .slider-10.mat-accent .mat-slider-track-fill {
+    background-color: green;
+  }
+
+  .slider-11.mat-accent .mat-slider-track-fill {
+    background-color: green;
+  }
+}

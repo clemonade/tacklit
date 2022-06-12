@@ -1,0 +1,10 @@
+:host ::ng-deep router-outlet ~ * {
+  flex: 1;
+  padding: 15px;
+}
+
+.logout-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}

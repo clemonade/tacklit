@@ -1,0 +1,44 @@
+<div fxLayout="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="15px"
+     fxFill>
+  <div fxLayout="column"
+       fxLayoutAlign="center center">
+    <span>Hello {{name}}!</span>
+    <span>How are you feeling today?</span>
+  </div>
+  <div fxLayout="row"
+       fxLayoutAlign="center center"
+       fxLayoutGap="15px"
+       class="slider-wrapper">
+    <mat-slider #slider
+                vertical
+                thumbLabel
+                [min]="min"
+                [max]="max"
+                [step]="step"
+                [tickInterval]="tickInterval"
+                [value]="value"
+                [ngClass]="'slider-' + slider.value">
+    </mat-slider>
+    <div fxLayout="column"
+         fxLayoutAlign="space-around start"
+         class="rating-texts-wrapper">
+      <div *ngFor="let text of ratingTexts">
+        <span>{{text}}</span>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column"
+       fxLayoutAlign="center center"
+       fxLayoutGap="15px">
+    <button mat-raised-button
+            color="primary"
+            (click)="onSubmit(slider.value)">Submit
+    </button>
+    <button mat-raised-button
+            color="primary"
+            (click)="onGenerateReport()">Generate Report
+    </button>
+  </div>
+</div>

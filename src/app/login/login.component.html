@@ -1,0 +1,17 @@
+<form fxLayout="column"
+      fxLayoutAlign="center center"
+      fxFill
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput
+           formControlName="name">
+  </mat-form-field>
+  <button mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid">Continue
+  </button>
+</form>
+

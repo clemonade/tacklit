@@ -1,0 +1,67 @@
+<div fxLayout="column"
+     fxLayoutAlign="space-between center"
+     fxFill>
+  <form fxLayout="row"
+        fxLayoutGap="15px"
+        [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="dateFrom" placeholder="From">
+        <input matEndDate formControlName="dateTo" placeholder="To">
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <button mat-icon-button color="primary"
+            type="button"
+            class="search-button"
+            [disabled]="form.invalid"
+            (click)="onSubmit()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+  <ng-container *ngIf="sufficientData;else insufficientData">
+    <div fxFlex
+         fxFill
+         class="area-chart-wrapper">
+      <ngx-charts-area-chart
+        [results]="results"
+        [scheme]="scheme"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        [showGridLines]="showGridLines"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [yAxisTicks]="yAxisTicks"
+        [curve]="curve"
+        [yScaleMin]="yScaleMin"
+        [yScaleMax]="yScaleMax">
+        <ng-template #tooltipTemplate
+                     #seriesTooltipTemplate
+                     let-model="model">
+          <div>Timestamp: {{model[0]['name']}}</div>
+          <div>Value: {{model[0]['value']}}</div>
+        </ng-template>
+      </ngx-charts-area-chart>
+    </div>
+    <div fxLayout="column">
+      <h2>Key trend data</h2>
+      <mat-hint>{{scope}}</mat-hint>
+      <span>
+      Across {{count}} check-ins, the overall score is {{mean | number: '1.1-1'}},
+      with a low of {{min}}, high of {{max}} and standard deviation of {{standardDeviation | number: '1.1-1'}}.
+    </span>
+    </div>
+  </ng-container>
+  <ng-template #insufficientData>
+    <div fxLayout="column"
+         fxLayoutAlign="center center">
+      <span>Whoops, nothing to see here mate!</span>
+      <span>Pick a new date range or add more data.</span>
+    </div>
+  </ng-template>
+</div>
